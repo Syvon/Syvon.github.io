@@ -96,13 +96,19 @@ header-img: "img/about-bg.jpg"
 
 
 {% if site.disqus_username %}
-<!-- disqus 评论框 start -->
+<!-- 多说评论框 start -->
 <div class="comment">
-    <div id="disqus_thread" class="disqus-thread">
+    <div class="ds-thread"
+    {% if site.duoshuo_username == "huxblog" %}
+        data-thread-id="1187623191091085319"
+    {% else %}
+        data-thread-key="{{site.duoshuo_username}}/about"
+    {% endif %}
 
-    </div>
+    data-title="{{page.title}}"
+    data-url="{{site.url}}/about/"></div>
 </div>
-<!-- disqus 评论框 end -->
+<!-- 多说评论框 end -->
 
 <!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
