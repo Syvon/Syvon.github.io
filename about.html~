@@ -66,7 +66,12 @@ header-img: "img/about-bg.jpg"
 {% if site.duoshuo_username %}
 <!-- 多说评论框 start -->
 <div class="comment">
-
+    <div class="ds-thread"
+    {% if site.duoshuo_username == "huxblog" %}
+        data-thread-id="1187623191091085319"
+    {% else %}
+        data-thread-key="{{site.duoshuo_username}}/about"
+    {% endif %}
 
     data-title="{{page.title}}"
     data-url="{{site.url}}/about/"></div>
@@ -96,19 +101,13 @@ header-img: "img/about-bg.jpg"
 
 
 {% if site.disqus_username %}
-<!-- 多说评论框 start -->
+<!-- disqus 评论框 start -->
 <div class="comment">
-    <div class="ds-thread"
-    {% if site.duoshuo_username == "huxblog" %}
-        data-thread-id="1187623191091085319"
-    {% else %}
-        data-thread-key="{{site.duoshuo_username}}/about"
-    {% endif %}
+    <div id="disqus_thread" class="disqus-thread">
 
-    data-title="{{page.title}}"
-    data-url="{{site.url}}/about/"></div>
+    </div>
 </div>
-<!-- 多说评论框 end -->
+<!-- disqus 评论框 end -->
 
 <!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
