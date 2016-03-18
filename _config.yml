@@ -1,6 +1,6 @@
 # Site settings
 title: WunWun' Blog
-SEOTitle: 黄玄的博客 | Hux Blog
+SEOTitle: 陈兴旺的博客 | WunWun Blog
 header-img: img/home-bg.jpg
 email: xingwangchan@gmail.com
 description: "移动端开发、虚拟地理环境、三维GIS | 陈兴旺，C++，Java，Python，Android, 爬虫 | big big world"
@@ -12,9 +12,9 @@ baseurl: ""                             # for example, '/blog' if your blog host
 
 # SNS settings
 RSS: false
-weibo_username:     
-zhihu_username:     
-github_username:     
+weibo_username: 旺旺可爱多多    
+zhihu_username: 陈兴旺    
+github_username: iwun    
 facebook_username:  
 
 
@@ -49,7 +49,7 @@ kramdown:
 #disqus_username: _your_disqus_short_name_
 
 # Duoshuo settings
-duoshuo_username: huxblog
+duoshuo_username: 旺旺可爱多多
 # Share component is depend on Comment so we can NOT use share only.
 duoshuo_share: true                     # set to false if you want to use Comment without Sharing
 
@@ -60,7 +60,7 @@ duoshuo_share: true                     # set to false if you want to use Commen
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
 sidebar-about-description: "左手写诗，右手弹吉他，双手敲代码。"
-sidebar-avatar: /img/avatar-hux.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
+sidebar-avatar: /img/avatar-wun.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
 
@@ -68,36 +68,22 @@ sidebar-avatar: /img/avatar-hux.jpg      # use absolute URL, seeing it's used in
 featured-tags: true                     # whether or not using Feature-Tags
 featured-condition-size: 1              # A tag will be featured if the size of it is more than this condition value
 
-
-
 # Friends
 friends: [
     {
-        title: "前端外刊评论",
-        href: "http://qianduan.guru/"
+        title: "Hux Blog",
+        href: "http://huangxuan.me"
     },{
-        title: "天镶的博客",
-        href: "http://lingyu.wang/"
+        title: "Foo",
+        href: "#"
     },{
-        title: "Luke的自留地",
-        href: "http://hmqk1995.github.io"
+        title: "Bar",
+        href: "#"
     },{
-        title: "Ebn's Blog",
-        href: "http://ebnbin.com/"
+        title: "Example Friends",
+        href: "#"
     },{
-        title: "SmdCn's Blog",
-        href: "http://blog.smdcn.net"
-    },{
-        title: "解旻的博客",
-        href: "http://xieminis.me/"
-    },{
-        title: "DHong Say",
-        href: "http://dhong.co"
-    },{
-        title: "尹峰以为",
-        href: "http://ingf.github.io/"
-    },{
-        title: "前端神盾局",
-        href: "http://wepiaofei.github.io/blog/"
+        title: "It helps SEO",
+        href: "#"
     }
 ]
