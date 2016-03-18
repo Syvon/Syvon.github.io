@@ -69,7 +69,7 @@ header-img: "img/about-bg.jpg"
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
-var duoshuoQuery = {short_name:"旺旺可爱多多"};
+var duoshuoQuery = {short_name:"6263298191211365000"};
 	(function() {
 		var ds = document.createElement('script');
 		ds.type = 'text/javascript';ds.async = true;
