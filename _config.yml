@@ -54,7 +54,11 @@ duoshuo_username: wun
 duoshuo_share: true                     # set to false if you want to use Comment without Sharing
 
 
-
+# Analytics settings
+# Baidu Analytics
+ba_track_id: 2b9bfb9abda361d602b0cdad4e4cb995
+# Google Analytics
+ga_track_id: 'UA-75145246-2'            # Format: UA-xxxxxx-xx
 
 
 # Sidebar settings
