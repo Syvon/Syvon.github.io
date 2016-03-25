@@ -58,5 +58,6 @@ tags:
 2. 如何引用字符串等资源。
 	- 在代码中通过R.string.hello_world可以获得该字符串的引用。
 	- 在XML中通过@string/hello_world可以获得该字符串的引用。
+
 > 其中string部分是可以替换的，如果引用图片资源就可以替换成drawable，如果引用布局文件可以替换成layout
 
