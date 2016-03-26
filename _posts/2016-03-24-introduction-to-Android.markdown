@@ -33,7 +33,7 @@ tags:
 
 	所有安装在手机上的应用程序都是属于这一层的。
 
-![Android-System-Architecture](/img/in-post/Android-System-Architecture.png)
+![Android-System-Architecture](/img/in-post/the-first-line-of-code/Android-System-Architecture.png)
 <small class="img-hint">Android系统架构图</small>
 
 
