@@ -291,7 +291,6 @@ onCreate()方法中有一个Bundle类型的参数。这个参数一般情况下�
 <small class="img-hint">standard模式</small>
 
 - singleTop
-
 在启动活动的时候，如果发现返回栈的栈顶已经是该活动，则认为可以直接使用它，不会再创建新的活动实例。
 
 ![Android-Launch-singleTop](/img/in-post/the-first-line-of-code/android-launch-singleTop.png)
