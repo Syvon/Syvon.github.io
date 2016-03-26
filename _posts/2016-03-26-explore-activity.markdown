@@ -259,18 +259,15 @@ Activity还有一个startActivityForResult()方法用于启动活动，但这个
 
 > Activity中提供了一个onSaveInstancState()回调方法，这个方法会保证一定在活动被回收之前调用，因此可以通过这个方法保存临时数据。
 
-`
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         String tempData = "something you just typed";
         outState.putString("data_key",tempData);
     }	
-`
 
 onCreate()方法中有一个Bundle类型的参数。这个参数一般情况下都是null，但是当活动被系统回收之前有通过onSaveInstancState()保存数据的话，这个参数就会带有之前保存的全部数据。
 
-`
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -280,7 +277,6 @@ onCreate()方法中有一个Bundle类型的参数。这个参数一般情况下�
             String tempData = savedInstanceState.getString("data_key");
         }
     }
-`
 
 ## 活动的启动模式
 
