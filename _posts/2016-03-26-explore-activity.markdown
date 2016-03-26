@@ -17,7 +17,6 @@ tags:
 
 > Toast是Android视同提供的一种非常好的提醒方式，在程序中可以使用它将一些短小的信息通知给用户。
 
-`
     Button button = (Button)findViewById(R.id.button);
     button.setOnClickListener(new OnClickListener(){
         @Override
@@ -25,7 +24,6 @@ tags:
             Toast.makeText(MainActivity.this,"Hello,world",Toast.LENGTH_LONG).show();
         }
     });
-`
 
 在活动中，可以通过**findViewById()**方法获取到在布局文件中定义的元素，它接受一个资源id的参数，返回一个View对象，我们将它向下转型成Button对象。得到按钮的实例之后，通过调用**setOnClickListener()**方法为按钮注册一个监听器，点击按钮时就会执行监听器中的onClick()方法。
 
@@ -36,7 +34,6 @@ tags:
 
 在res目录下面，新建menu文件夹，在这个文件夹下新建菜单文件。
 
-`
 	<?xml version="1.0" encoding="utf-8"?>
 	<menu xmlns:android="http://schemas.android.com/apk/res/android">
     	<item
@@ -47,22 +44,18 @@ tags:
         	android:id="@+id/remove_item"
         	android:title="Remove" />
 	</menu>
-`
 
 在Activity中，重写**onCreateOptionsMenu()**方法，将菜单显示出来。
 
-`
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main,menu);
         return true;
     }
 
-`
 
 在Activity中重写**onOptionsItemSelected()**方法，定义菜单显示事件。
 
-`
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -76,7 +69,6 @@ tags:
         }
         return true;
     }
-`
 
 
 ## Intent
@@ -87,10 +79,8 @@ Intent用法大致分为两种：显式Intent和隐式Intent。
 
 - 显式Intent
 
-`
 	Intent intent = new Intent(FirstActivity.this,SecondActivity.class);
 	startActivity(intent);
-`
 
 - 隐式Intent
 
@@ -98,40 +88,33 @@ Intent用法大致分为两种：显式Intent和隐式Intent。
 
 在AndroidManifest.xml中，通过在<activity>标签下配置<intent-filter>的内容，可以指定当前活动能够相应的action和category。
 
-`
     <activity android:name=".MainActivity">
         <intent-filter>
             <action android:name="com.example.activitytest.ACTION_START" />
             <category android:name="android.intent.category.DEFAULT" />
         </intent-filter>
     </activity>
-`
 
 在<action>标签中，我们指明了当前活动可以响应com.example.activitytest.ACTION_START这个action，而<category>标签则包含了一些附加信息，更精确的指明了当前活动能够响应的Intent中还可能带有的category。只有<action>和<category>中的内容同时能够匹配上Intent中指定的action和category时，这个活动才能响应该Intent。
 
 在activity中，我们可以这样启动Intent。
 
-`
 	Intent intent = new Intent("com.example.activitytest.ACTION_START");
 	//intent.addCategory("com.example.activitytest.MY_CATEGORY");
 	startActivity(intent);
-`
 
 **每个Intent中只能指定一个action，但却能指定多个category**
 
 - 隐式Intent的更多用法
 
-`
 	Intent intent = new Intent(Intent.ACTION_VIEW);
 	intent.setData(Uri.parse("http://www.baidu.com"));
 	startActivity(intent);
-`
 
 setData()部分接受一个Uri对象，主要用于指定当前Intent正在操作的数据。
 
 与此对应，我们可以在<intent-filter>标签中再配置一个<data>标签，用于更精确地指定当前活动能够响应什么类型的数据。
 
-`
     <activity android:name=".MainActivity">
         <intent-filter>
             <action android:name="com.example.activitytest.ACTION_START" />
@@ -139,13 +122,11 @@ setData()部分接受一个Uri对象，主要用于指定当前Intent正在操�
             <data android:scheme="http" />
         </intent-filter>
     </activity>
-`
 
 - 向下一个活动传递数据
 
 Intent提供了一系列方法的重载，可以把我们想要传递的数据暂存在Intent中。启动了另一个活动后，只需要把这些数据再从Intent中取出就可以了。
 
-`
     button.setOnClickListener(new OnClickListener(){
         @Override
         public void onClick(View v) {
@@ -155,14 +136,11 @@ Intent提供了一系列方法的重载，可以把我们想要传递的数据�
             startActivity(intent);
         }
     });
-`
 
 在SecondActivity中将传递的数据取出。
 
-`
 	Intent intent = getIntent();
 	String data = intent.getStringExtra("extra_data");
-`
 
 - 返回数据给上一个活动
 
@@ -170,7 +148,6 @@ Activity还有一个startActivityForResult()方法用于启动活动，但这个
 
 > startActivityForResult()方法接受两个参数，第一个参数还是Intent，第二个参数是请求码，用于在之后的回调中判断数据的来源。
 
-`
     button.setOnClickListener(new OnClickListener(){
         @Override
         public void onClick(View v) {
@@ -178,11 +155,9 @@ Activity还有一个startActivityForResult()方法用于启动活动，但这个
             startActivityForResult(intent，1);
         }
     });
-`
 
 向上一个活动返回数据。我们还是构建了一个Intent，只不过这个Intent仅仅是用于传递数据而已，没有指定任何的“意图”。setResult()专门用于向上一个活动返回数据。第一个参数用于向上一个活动返回处理结果，一般使用RESULT_OK或RESULT_CANCELLED。
 
-`
     button2.setOnClickListener(new OnClickListener(){
         @Override
         public void onClick(View v) {
@@ -191,11 +166,9 @@ Activity还有一个startActivityForResult()方法用于启动活动，但这个
             setResult(RESULT_OK,intent);
         }
     });
-`
 
 由于我们使用startActivityForResult()方法来启动SecondActivity，在SecondActivity被销毁之后会回调上一个活动的onActivityResult()方法。
 
-`
 	@Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (requestCode) {
@@ -207,7 +180,6 @@ Activity还有一个startActivityForResult()方法用于启动活动，但这个
         default;
     	}
     }
-`
 
 ## 活动的生命周期
 
@@ -280,7 +252,7 @@ Activity还有一个startActivityForResult()方法用于启动活动，但这个
 
 	活动在onResume()方法和onPause()方法之间所经历的，就是前台生存期。在前台生存期内，活动总是处于运行状态的。
 
-![Android-Activity-Life](/img/in-post/the-first-line-of-code/Android-Activit-Life.png)
+![Android-Activity-Life](/img/in-post/the-first-line-of-code/Android-Activity-Life.png)
 <small class="img-hint">Android活动生命周期图</small>
 
 5. 在活动被回收时保存临时数据
