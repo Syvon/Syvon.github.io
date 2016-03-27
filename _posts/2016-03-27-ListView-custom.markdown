@@ -15,7 +15,7 @@ tags:
 
 ## ListView的简单用法
 
-1. 在布局中加入ListView控件
+在布局中加入ListView控件
 
     <?xml version="1.0" encoding="utf-8"?>
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -29,20 +29,21 @@ tags:
         </ListView>
     </LinearLayout>
 
-2. 数据是无法直接传递给ListView的，需要借助适配器来完成。在ArrayAdapter的构造函数中依次传递当前上下文，ListView子项布局的id，以及要适配的数据。最后调用ListView的setAdapter()方法，将构建好的适配器对象传递进去。
+数据是无法直接传递给ListView的，需要借助适配器来完成。在ArrayAdapter的构造函数中依次传递当前上下文，ListView子项布局的id，以及要适配的数据。最后调用ListView的setAdapter()方法，将构建好的适配器对象传递进去。
+
 
     public class MainActivity extends Activity {
-        **private String[] data = {"Apple","Banana","Orange","Watermelon",**
-                **"Pear","Grape","Pineapple","Strawberry","Cherry","Mango"};**
+        private String[] data = {"Apple","Banana","Orange","Watermelon",
+                "Pear","Grape","Pineapple","Strawberry","Cherry","Mango"};
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_main);
-            **ArrayAdapter<String> adapter = new ArrayAdapter<String>(**
-                    **MainActivity.this,android.R.layout.simple_list_item_1,data**
-            **);**
-            **ListView listView = (ListView)findViewById(R.id.list_view);**
-            **listView.setAdapter(adapter);**
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+                    MainActivity.this,android.R.layout.simple_list_item_1,data
+            );
+            ListView listView = (ListView)findViewById(R.id.list_view);
+            listView.setAdapter(adapter);
         }
     }
 
@@ -51,7 +52,7 @@ tags:
 
 ## 定制ListView的界面
 
-1. 定义一个实体类，作为ListView适配器的适配类型
+定义一个实体类，作为ListView适配器的适配类型
 
     public class Fruit {
         private String name;
@@ -68,7 +69,7 @@ tags:
         }
     }
 
-2. 位ListView的子项指定一个我们自定义的布局。定义了一个ImageView用于显示水果的图片，又定义了一个TextView用于显示水果的名称。
+为ListView的子项指定一个我们自定义的布局。定义了一个ImageView用于显示水果的图片，又定义了一个TextView用于显示水果的名称。
 
     <?xml version="1.0" encoding="utf-8"?>
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -86,7 +87,7 @@ tags:
             android:layout_marginLeft="10dip"/>
     </LinearLayout>
 
-3. 创建一个自定义的适配器，这个适配器继承自ArrayAdapter，并将泛型指定为Fruit类。
+创建一个自定义的适配器，这个适配器继承自ArrayAdapter，并将泛型指定为Fruit类。
 
     public class FruitAdapter extends ArrayAdapter<Fruit> {
         private int resourceId;
@@ -95,8 +96,8 @@ tags:
             resourceId = resource;
         }
         @Override
-        public View **getView(int position, View convertView, ViewGroup parent)** {
-            Fruit fruit = **getItem(position)**;
+        public View getView(int position, View convertView, ViewGroup parent) {
+            Fruit fruit = getItem(position);
             View view = LayoutInflater.from(getContext()).inflate(resourceId,null);
             ImageView fruitImage = (ImageView)view.findViewById(R.id.fruit_image);
             TextView fruitName = (TextView)view.findViewById(R.id.fruit_name);
@@ -108,18 +109,18 @@ tags:
 
     getView()方法在每个子项被滚动到屏幕内的时候会被调用。在getView()方法中，首先通过getItem()方法得到当前项的Fruit实例，然后使用LayoutInflater来为每个子项加载我们传入的布局。
 
-4. 修改MainActivity中的代码。
+修改MainActivity中的代码。
 
     public class MainActivity extends Activity {
-        **private List<Fruit> fruitList = new ArrayList<Fruit>();**
+        private List<Fruit> fruitList = new ArrayList<Fruit>();
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_main);
             initFruits();
-            **FruitAdapter adapter = new FruitAdapter(**
-                    **MainActivity.this,R.layout.fruit_item,fruitList**
-            **);**
+            FruitAdapter adapter = new FruitAdapter(
+                    MainActivity.this,R.layout.fruit_item,fruitList
+            );
             ListView listView = (ListView)findViewById(R.id.list_view);
             listView.setAdapter(adapter);
         }
@@ -160,11 +161,11 @@ tags:
     　　public View getView(int position, View convertView, ViewGroup parent) {
     　　　　Fruit fruit = getItem(position);
     　　　　View view;
-          **if (convertView == null) {**
-          **　　view = LayoutInflater.from(getContext()).inflate(resourceId, null);**
-          **} else {**
-          **　　view = convertView;**
-          **}**
+          if (convertView == null) {
+          　　view = LayoutInflater.from(getContext()).inflate(resourceId, null);
+          } else {
+          　　view = convertView;
+          }
     　　　　ImageView fruitImage = (ImageView) view.findViewById(R.id.fruit_image);
     　　　　TextView fruitName = (TextView) view.findViewById(R.id.fruit_name);
     　　　　fruitImage.setImageResource(fruit.getImageId());
@@ -183,25 +184,25 @@ tags:
     　　public View getView(int position, View convertView, ViewGroup parent) {
     　　　　Fruit fruit = getItem(position);
     　　　　View view;
-    　　　　**ViewHolder viewHolder;**
+    　　　　ViewHolder viewHolder;
     　　　　if (convertView == null) {
     　　　　　　view = LayoutInflater.from(getContext()).inflate(resourceId, null);
-    　　　　　　**viewHolder = new ViewHolder();**
-    　　　　　　**viewHolder.fruitImage = (ImageView) view.findViewById(R.id.fruit_image);**
-    　　　　　　**viewHolder.fruitName = (TextView) view.findViewById(R.id.fruit_name);**
-    　　　　　　**view.setTag(viewHolder); //  将ViewHolder 存储在View 中**
+    　　　　　　viewHolder = new ViewHolder();
+    　　　　　　viewHolder.fruitImage = (ImageView) view.findViewById(R.id.fruit_image);
+    　　　　　　viewHolder.fruitName = (TextView) view.findViewById(R.id.fruit_name);
+    　　　　　　view.setTag(viewHolder); //  将ViewHolder 存储在View 中
     　　　　} else {
     　　　　　　view = convertView;
-    　　　　　　**viewHolder = (ViewHolder) view.getTag(); //  重新获取ViewHolder**
+    　　　　　　viewHolder = (ViewHolder) view.getTag(); //  重新获取ViewHolder
     　　　　}
     　　　　viewHolder.fruitImage.setImageResource(fruit.getImageId());
     　　　　viewHolder.fruitName.setText(fruit.getName());
     　　　　return view;
     　　}
-    　　**class ViewHolder {**
-    　　**　　ImageView fruitImage;**
-    　　**　　TextView fruitName;**
-    　　**}**
+    　　class ViewHolder {
+    　　　　ImageView fruitImage;
+    　　　　TextView fruitName;
+    　　}
     }
 
 我们**新增了一个内部类ViewHolder，用于对控件的实例进行缓存**。当convertView为空的时候，创建一个ViewHolder对象，并将控件的实例都存放在 ViewHolder 里，然后调用 View的 setTag()方法，将 ViewHolder 对象存储在 View 中。当 convertView 不为空的时候则调用View的 getTag()方法，把 ViewHolder 重新取出。这样所有控件的实例都缓存在了 ViewHolder里，就没有必要每次都通过 findViewById()方法来获取控件实例了。
@@ -220,17 +221,17 @@ ListView 的滚动毕竟只是满足了我们视觉上的效果，可是如果Li
     　　　　FruitAdapter adapter = new FruitAdapter(MainActivity.this,R.layout.fruit_item, fruitList);
     　　　　ListView listView = (ListView) findViewById(R.id.list_view);
     　　　　listView.setAdapter(adapter);
-    　　　　listView**.setOnItemClickListener(new OnItemClickListener() {**
-    　　　　**@Override**
-    　　　　**　　public void onItemClick(AdapterView<?> parent, View view,**
-    　　　　**　　int position, long id) {**
-    　　　　**　　　　Fruit fruit = fruitList.get(position);**
-    　　　　**　　　　Toast.makeText(MainActivity.this, fruit.getName(),**
-    　　　　**　　　　Toast.LENGTH_SHORT).show();**
-    　　　　**}**
-    　　**});**
+    　　　　listView.setOnItemClickListener(new OnItemClickListener() {
+    　　　　@Override
+    　　　　　　public void onItemClick(AdapterView<?> parent, View view,
+    　　　　　　int position, long id) {
+    　　　　　　　　Fruit fruit = fruitList.get(position);
+    　　　　　　　　Toast.makeText(MainActivity.this, fruit.getName(),
+    　　　　　　　　Toast.LENGTH_SHORT).show();
+    　　　　}
+    　　});
         }
     ……
     }
 
-    我们使用了**setOnItemClickListener()**方法来为 ListView 注册了一个监听器，当用户点击了 ListView中的任何一个子项时就会回调 onItemClick()方法，在这个方法中可以通过 position 参数判断出用户点击的是哪一个子项，然后获取到相应的水果，并通过 Toast将水果的名字显示出来。
+我们使用了**setOnItemClickListener()**方法来为 ListView 注册了一个监听器，当用户点击了 ListView中的任何一个子项时就会回调 onItemClick()方法，在这个方法中可以通过 position 参数判断出用户点击的是哪一个子项，然后获取到相应的水果，并通过 Toast将水果的名字显示出来。
