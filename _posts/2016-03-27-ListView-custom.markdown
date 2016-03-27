@@ -22,27 +22,22 @@ tags:
         android:orientation="vertical" 
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
         <ListView
             android:id="@+id/list_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
         </ListView>
-
     </LinearLayout>
 
 2. 数据是无法直接传递给ListView的，需要借助适配器来完成。在ArrayAdapter的构造函数中依次传递当前上下文，ListView子项布局的id，以及要适配的数据。最后调用ListView的setAdapter()方法，将构建好的适配器对象传递进去。
 
     public class MainActivity extends Activity {
-
         **private String[] data = {"Apple","Banana","Orange","Watermelon",**
                 **"Pear","Grape","Pineapple","Strawberry","Cherry","Mango"};**
-
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_main);
-
             **ArrayAdapter<String> adapter = new ArrayAdapter<String>(**
                     **MainActivity.this,android.R.layout.simple_list_item_1,data**
             **);**
@@ -61,16 +56,13 @@ tags:
     public class Fruit {
         private String name;
         private  int imageId;
-
         public Fruit(String name, int imageId) {
             this.name = name;
             this.imageId = imageId;
         }
-
         public String getName() {
             return name;
         }
-
         public int getImageId() {
             return imageId;
         }
@@ -82,43 +74,34 @@ tags:
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="vertical" android:layout_width="match_parent"
         android:layout_height="match_parent">
-
         <ImageView
             android:id="@+id/fruit_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
-
         <TextureView
             android:id="@+id/fruit_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginLeft="10dip"/>
-
     </LinearLayout>
 
 3. 创建一个自定义的适配器，这个适配器继承自ArrayAdapter，并将泛型指定为Fruit类。
 
     public class FruitAdapter extends ArrayAdapter<Fruit> {
-
         private int resourceId;
-
         public FruitAdapter(Context context, int resource, List<Fruit> objects) {
             super(context, resource, objects);
             resourceId = resource;
         }
-
         @Override
         public View **getView(int position, View convertView, ViewGroup parent)** {
-
             Fruit fruit = **getItem(position)**;
             View view = LayoutInflater.from(getContext()).inflate(resourceId,null);
-
             ImageView fruitImage = (ImageView)view.findViewById(R.id.fruit_image);
             TextView fruitName = (TextView)view.findViewById(R.id.fruit_name);
             fruitImage.setImageResource(fruit.getImageId());
             fruitName.setText(fruit.getName());
-
             return view;
         }
     }
@@ -128,24 +111,18 @@ tags:
 4. 修改MainActivity中的代码。
 
     public class MainActivity extends Activity {
-
         **private List<Fruit> fruitList = new ArrayList<Fruit>();**
-
-
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_main);
-
             initFruits();
-
             **FruitAdapter adapter = new FruitAdapter(**
                     **MainActivity.this,R.layout.fruit_item,fruitList**
             **);**
             ListView listView = (ListView)findViewById(R.id.list_view);
             listView.setAdapter(adapter);
         }
-
         private void initFruits() {
             Fruit apple = new Fruit("Apple",R.drawable.apple);
             fruitList.add(apple);
