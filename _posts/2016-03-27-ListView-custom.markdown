@@ -207,7 +207,7 @@ tags:
 
 我们**新增了一个内部类ViewHolder，用于对控件的实例进行缓存**。当convertView为空的时候，创建一个ViewHolder对象，并将控件的实例都存放在 ViewHolder 里，然后调用 View的 setTag()方法，将 ViewHolder 对象存储在 View 中。当 convertView 不为空的时候则调用View的 getTag()方法，把 ViewHolder 重新取出。这样所有控件的实例都缓存在了 ViewHolder里，就没有必要每次都通过 findViewById()方法来获取控件实例了。
 
-##ListView的点击事件
+## ListView的点击事件
 
 ListView 的滚动毕竟只是满足了我们视觉上的效果，可是如果ListView中的子项不能点击的话，这个控件就没有什么实际的用途了。因此，我们来学习一下ListView如何才能响应用户的点击事件。
 
