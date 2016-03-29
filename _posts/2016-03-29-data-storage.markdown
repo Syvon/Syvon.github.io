@@ -83,28 +83,28 @@ Context类中还提供了一个**openFileInput()**方法，用于从文件中读
 
 #### 将数据存储到SharedPreferences中
 
-> 要想使用SharedPreferences来存储数据，首先需要获取到SharedPreferences对象。Android中主要提供了三种方法用于得到SharedPreferences对象。
+要想使用SharedPreferences来存储数据，首先需要获取到SharedPreferences对象。Android中主要提供了三种方法用于得到SharedPreferences对象。
 
-1. Context 类中的 getSharedPreferences()方法
+- Context 类中的 getSharedPreferences()方法
 
 此方法接收两个参数，第一个参数用于指定SharedPreferences文件的名称，如果指
 定的文件不存在则会创建一个。第二个参数用于指定操作模式，主要有两种模式可以选择，MODE_PRIVATE和MODE_MULTI_PROCESS。MODE_PRIVATE仍然是默认的操作模式，和直接传入0效果是相同的，表示只有当前的应用程序才可以对这个SharedPreferences文件进行读写。MODE_MULTI_PROCESS则一般是用于会有多个进程中对同一个SharedPreferences文件进行读写的情况。
 
-2. Activity 类中的 getPreferences()方法
+- Activity 类中的 getPreferences()方法
 
 这个方法和Context中的getSharedPreferences()方法很相似，不过它只接收一个操作模式参数，因为使用这个方法时会自动将当前活动的类名作为SharedPreferences的文件名。
 
-3. PreferenceManager 类中的 getDefaultSharedPreferences()方法
+- PreferenceManager 类中的 getDefaultSharedPreferences()方法
 
 这是一个静态方法，它接收一个Context参数，并自动使用当前应用程序的包名作为前缀来命名SharedPreferences文件。
 
 得到了SharedPreferences对象之后，就可以开始向SharedPreferences文件中存储数据了，主要可以分为三步实现。
 
-- 调用SharedPreferences对象的edit()方法来获取一个SharedPreferences.Editor对象。
+1. 调用SharedPreferences对象的edit()方法来获取一个SharedPreferences.Editor对象。
 
-- 向SharedPreferences.Editor对象中添加数据，比如添加一个布尔型数据就使用putBoolean方法，添加一个字符串则使用putString()方法，以此类推。
+2. 向SharedPreferences.Editor对象中添加数据，比如添加一个布尔型数据就使用putBoolean方法，添加一个字符串则使用putString()方法，以此类推。
 
-- 调用commit()方法将添加的数据提交，从而完成数据存储操作。
+3. 调用commit()方法将添加的数据提交，从而完成数据存储操作。
 
 代码如下所示：
 
