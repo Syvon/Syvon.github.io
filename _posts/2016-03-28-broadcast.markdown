@@ -117,13 +117,13 @@ Android系统为了保证应用程序的安全性做了规定，如果程序需�
 
 这里我们准备让程序接收一条开机广播，当收到这条广播时就可以在 onReceive()方法里 执行相应的逻辑，从而实现开机启动的功能。新建一个 BootCompleteReceiver 继承自 BroadcastReceiver，代码如下所示：
 
-public class BootCompleteReceiver extends BroadcastReceiver {
-    @Override
-    public void onReceive(Context context, Intent intent) { 
-        Toast.makeText(context, "Boot Complete", Toast.LENGTH_LONG).show();
-    }
+    public class BootCompleteReceiver extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context context, Intent intent) { 
+            Toast.makeText(context, "Boot Complete", Toast.LENGTH_LONG).show();
+        }   
 
-}
+    }
 
 在 AndroidManifest.xml 中将这个广播接收器的类名注册进去.
 
@@ -184,40 +184,40 @@ public class BootCompleteReceiver extends BroadcastReceiver {
 
 Android引入了一套本地广播机制，使用这个机制发出的广播只能够在应用程序的内部进行传递，并且广播接收器也只能接收来自本应用 程序发出的广播。
 
-public class MainActivity extends Activity { 
-    private IntentFilter intentFilter; 
-    private LocalReceiver localReceiver;
-    private LocalBroadcastManager localBroadcastManager;
-    @Override
-    protected void onCreate(Bundle savedInstanceState) { 
-        super.onCreate(savedInstanceState); 
-        setContentView(R.layout.activity_main);
-        localBroadcastManager = LocalBroadcastManager.getInstance(this);        
-
-        // 获取实例
-        Button button = (Button) findViewById(R.id.button);
-        button.setOnClickListener(new OnClickListener() {            
+    public class MainActivity extends Activity { 
+        private IntentFilter intentFilter; 
+        private LocalReceiver localReceiver;
+        private LocalBroadcastManager localBroadcastManager;
         @Override
-        public void onClick(View v) {       
-            Intent intent = new Intent("com.example.broadcasttest. LOCAL_BROADCAST");
-            localBroadcastManager.sendBroadcast(intent); // 发送本地广播
+        protected void onCreate(Bundle savedInstanceState) { 
+            super.onCreate(savedInstanceState); 
+            setContentView(R.layout.activity_main);
+            localBroadcastManager = LocalBroadcastManager.getInstance(this);            
+
+            // 获取实例
+            Button button = (Button) findViewById(R.id.button);
+            button.setOnClickListener(new OnClickListener() {            
+            @Override
+            public void onClick(View v) {       
+                Intent intent = new Intent("com.example.broadcasttest. LOCAL_BROADCAST");
+                localBroadcastManager.sendBroadcast(intent); // 发送本地广播
+            }           
+
+            });
+            intentFilter = new IntentFilter(); intentFilter.addAction("com.example.broadcasttest.LOCAL_BROADCAST"); localReceiver = new LocalReceiver(); localBroadcastManager.registerReceiver(localReceiver, intentFilter);// 注册本地广播监听器
+            }   
+        @Override   
+        protected void onDestroy() {    
+            super.onDestroy();  
+            localBroadcastManager.unregisterReceiver(localReceiver);    
         }       
 
-        });
-        intentFilter = new IntentFilter(); intentFilter.addAction("com.example.broadcasttest.LOCAL_BROADCAST"); localReceiver = new LocalReceiver(); localBroadcastManager.registerReceiver(localReceiver, intentFilter);// 注册本地广播监听器
-        }   
-    @Override   
-    protected void onDestroy() {    
-        super.onDestroy();  
-        localBroadcastManager.unregisterReceiver(localReceiver);    
-    }   
+        class LocalReceiver extends BroadcastReceiver {     
 
-    class LocalReceiver extends BroadcastReceiver { 
-
-        @Override
-        public void onReceive(Context context, Intent intent) { 
-            Toast.makeText(context, "received local broadcast",
-            Toast.LENGTH_SHORT).show();
+            @Override
+            public void onReceive(Context context, Intent intent) { 
+                Toast.makeText(context, "received local broadcast",
+                Toast.LENGTH_SHORT).show();
+            }
         }
     }
-}
