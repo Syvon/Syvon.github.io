@@ -16,7 +16,7 @@ tags:
 
 ## Catagory
 
-1. [Unix](#unix)
+1. [尤尼克斯](#尤尼克斯)
 	1. [Bell Labs](#bell-labs)
 	2. [Xenix](#xenix)
 	3. [BSD](#bsd)
@@ -39,7 +39,7 @@ tags:
 
 ---
 
-## Unix
+## 尤尼克斯
 
 
 > Unix is a **family** of multitasking, multiuser computer OS.

@@ -12,27 +12,6 @@ tags:
 
 > 这是《第一行代码》复习笔记的第六章.
 
-## Catagory
-
-1. [文件存储](#文件存储)
-    1. [将数据存储到文件中](#将数据存储到文件中)
-    2. [从文件中读取数据](#从文件中读取数据)
-
-2. [SharedPreference存储](#SharedPreference存储)
-    1. [将数据存储到SharedPreferences中](#将数据存储到SharedPreferences中)
-    2. [从SharedPreferences中读取数据](#从SharedPreferences中读取数据)
-
-3. [数据库存储](#数据库存储)
-    1. [创建数据库](#创建数据库)
-    2. [升级数据库](#升级数据库)
-    3. [添加数据](#添加数据)
-    4. [更新数据](#更新数据)
-    5. [删除数据](#删除数据)
-    6. [查询数据](#查询数据)
-    7. [使用SQL操作数据库](#使用SQL操作数据库)
-
----
-
 ## 文件存储
 
 文件存储是Android中最基本的一种数据存储方式，它不对存储的内容进行任何的格式化处理，所有数据都是原封不动地保存到文件当中的，因而它比较适合用于存储一些简单的文本数据或二进制数据。
@@ -104,9 +83,9 @@ Context类中还提供了一个**openFileInput()**方法，用于从文件中读
 
 #### 将数据存储到SharedPreferences中
 
-要想使用SharedPreferences来存储数据，首先需要获取到SharedPreferences对象。Android中主要提供了三种方法用于得到SharedPreferences对象。
+> 要想使用SharedPreferences来存储数据，首先需要获取到SharedPreferences对象。Android中主要提供了三种方法用于得到SharedPreferences对象。
 
-1.  Context 类中的 getSharedPreferences()方法
+1. Context 类中的 getSharedPreferences()方法
 
 此方法接收两个参数，第一个参数用于指定SharedPreferences文件的名称，如果指
 定的文件不存在则会创建一个。第二个参数用于指定操作模式，主要有两种模式可以选择，MODE_PRIVATE和MODE_MULTI_PROCESS。MODE_PRIVATE仍然是默认的操作模式，和直接传入0效果是相同的，表示只有当前的应用程序才可以对这个SharedPreferences文件进行读写。MODE_MULTI_PROCESS则一般是用于会有多个进程中对同一个SharedPreferences文件进行读写的情况。
@@ -121,11 +100,11 @@ Context类中还提供了一个**openFileInput()**方法，用于从文件中读
 
 得到了SharedPreferences对象之后，就可以开始向SharedPreferences文件中存储数据了，主要可以分为三步实现。
 
-1. 调用SharedPreferences对象的edit()方法来获取一个SharedPreferences.Editor对象。
+- 调用SharedPreferences对象的edit()方法来获取一个SharedPreferences.Editor对象。
 
-2. 向SharedPreferences.Editor对象中添加数据，比如添加一个布尔型数据就使用putBoolean方法，添加一个字符串则使用putString()方法，以此类推。
+- 向SharedPreferences.Editor对象中添加数据，比如添加一个布尔型数据就使用putBoolean方法，添加一个字符串则使用putString()方法，以此类推。
 
-3. 调用commit()方法将添加的数据提交，从而完成数据存储操作。
+- 调用commit()方法将添加的数据提交，从而完成数据存储操作。
 
 代码如下所示：
 
