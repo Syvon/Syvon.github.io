@@ -134,27 +134,27 @@ ContentResolver中的增删改查方法接收一个Uri参数，这个参数被�
 		}
 	}
 
-1. onCreate()
+- onCreate()
 
 初始化内容提供器的时候调用。通常会在这里完成对数据库的创建和升级等操作，返回true表示内容提供器初始化成功，返回false则表示失败。注意，只有当存在ContentResolver尝试访问我们程序中的数据时，内容提供器才会被初始化。
 
-2. query()
+- query()
 
 从内容提供器中查询数据。使用uri参数来确定查询哪张表，projection参数用于确定查询哪些列，selection和selectionArgs参数用于约束查询哪些行，sortOrder参数用于对结果进行排序，查询的结果存放在Cursor对象中返回。
 
-3. insert()
+- insert()
 
 向内容提供器中添加一条数据。使用uri参数来确定要添加到的表，待添加的数据保存在values参数中。添加完成后，返回一个用于表示这条新记录的URI。
 
-4. update()
+- update()
 
 更新内容提供器中已有的数据。使用uri参数来确定更新哪一张表中的数据，新数据保存在values参数中，selection和selectionArgs参数用于约束更新哪些行，受影响的行数将作为返回值返回。
 
-5. delete()
+- delete()
 
 从内容提供器中删除数据。使用uri参数来确定删除哪一张表中的数据，selection和selectionArgs参数用于约束删除哪些行，被删除的行数将作为返回值返回。
 
-6. getType()
+- getType()
 
 根据传入的内容URI来返回相应的MIME类型。可以看到，几乎每一个方法都会带有Uri这个参数，这个参数也正是调用ContentResolver的增删改查方法时传递过来的。而现在，我们需要对传入的Uri参数进行解析，从中分析出调用方期望访问的表和数据。
 
@@ -403,7 +403,7 @@ query()方法，在这个方法中先获取到了SQLiteDatabase的实例，然�
 		Android:exported="true">
 	</provider>
 
-测试访问刚才的程序
+#### 测试访问刚才的程序
 
 添加数据
 

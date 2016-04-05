@@ -60,14 +60,14 @@ PendingIntent的用法比较简单，它主要提供了几个静态方法用于�
 
 ## 通知的高级技巧
 
-1. sound属性
+- sound属性
 
 它可以在通知发出的时候播出一段音频，这样就能够更好地告知用户有通知到来。
 
 	Uri soundUri=Uri.parse(new File("/system/media/audio/ringtongs/basic_tone.ogg"));
 	notification.sound=soundUri;
 
-2. vibrate属性
+- vibrate属性
 
 vibrate这个属性。它是一个长整形的数组，由于设置手机静止和震动的时长，以毫秒为单位。下标0的值表示手机静止的时长，下标为1的值表示手机震动的时长，下标为2的值又表示手机静止的时长，以此类推。
 
@@ -78,7 +78,7 @@ vibrate这个属性。它是一个长整形的数组，由于设置手机静止�
 
 	<uses-permission android.name="android.permission.VIBRATE"/>
 
-3. 在通知到来的时候控制手机LED灯
+- 在通知到来的时候控制手机LED灯
 
 手机基本上都会前置一个LED灯，当有未接电话或未读短信，而此时手机又处于锁屏状态时LED灯就会不停地闪烁，提醒用户去查看。我们可以使用ledARGB,ledOnMS,ledOffMS以及flags这几个属性来实现这种效果。ledARGB用于控制LED灯的颜色，一般有红绿蓝三种颜色可选。ledOnMS用于指定LED灯亮起的时长，以毫秒为单位。ledOffMS由于指定LED灯暗去的时长，也是以毫秒为单位。flags可用于指定通知的一些行为，其中就包括显示LED灯这一选项。所以，等通知到来时，如果想要实现LED灯以绿色的灯一闪一闪的效果，就可以写成：
 
@@ -87,7 +87,7 @@ vibrate这个属性。它是一个长整形的数组，由于设置手机静止�
 	notification.ledOffMS=1000;
 	notification.flags=Notification.FLAG_SHOW_LIGHTS;
 
-4. 采用默认设置
+- 采用默认设置
 
 当然，如果你不想进行那么多繁琐的设置，也可以直接使用通知的默认效果，它会根据当前手机的环境来决定播放什么铃声，以及如何震动，写法如下：
 	notification.defaults=Notification.DEFAULT_ALL;
