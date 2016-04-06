@@ -4,7 +4,7 @@ title:      "Android中的服务"
 subtitle:   "服务是个什么鬼"
 date:       2016-04-04
 author:     "WunWun"
-header-img: "img/android-.jpg"
+header-img: "img/android-service.jpg"
 tags:
     - Android
     - 学习笔记
@@ -263,38 +263,38 @@ onCreate() 方法会在服务创建的时候调用，onStartCommand() 方法会�
 
 #### 启动和停止服务
 
-public class MainActivity extends Activity implements OnClickListener {
+    public class MainActivity extends Activity implements OnClickListener { 
 
-    private Button startService;
-    private Button stopService;
+        private Button startService;
+        private Button stopService; 
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        startService = (Button) findViewById(R.id.start_service);
-        stopService = (Button) findViewById(R.id.stop_service);
-        startService.setOnClickListener(this);
-        stopService.setOnClickListener(this);
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_main);
+            startService = (Button) findViewById(R.id.start_service);
+            stopService = (Button) findViewById(R.id.stop_service);
+            startService.setOnClickListener(this);
+            stopService.setOnClickListener(this);
+        }   
+
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()) {
+            case R.id.start_service:
+                Intent startIntent = new Intent(this, MyService.class);
+                startService(startIntent); // 启动服务
+                break;
+            case R.id.stop_service:
+                Intent stopIntent = new Intent(this, MyService.class);
+                stopService(stopIntent); // 停止服务
+                break;
+            default:
+                break;
+            }
+        }   
+
     }
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-        case R.id.start_service:
-            Intent startIntent = new Intent(this, MyService.class);
-            startService(startIntent); // 启动服务
-            break;
-        case R.id.stop_service:
-            Intent stopIntent = new Intent(this, MyService.class);
-            stopService(stopIntent); // 停止服务
-            break;
-        default:
-            break;
-        }
-    }
-
-}
 
 在Start Service按钮的点击事件里，我们构建出了一个Intent对象，并调用startService()方法来启动MyService这个服务。在Stop Service按钮的点击事件里，我们同样构建出了一个Intent对象，并调用stopService()方法来停止MyService这个服务。**startService()和stopService()方法都是定义在Context类中的，所以我们在Activity里可以直接调用这两个方法**。注意，这里完全是由Activity来决定服务何时停止的，如果没有点击Stop Service按钮，服务就会一直处于运行状态。那服务有没有什么办法让自己停止下来呢？当然可以，只需要在MyService的任何一个位置调用**stopSelf()方法**就能让这个服务停止下来了。
 
