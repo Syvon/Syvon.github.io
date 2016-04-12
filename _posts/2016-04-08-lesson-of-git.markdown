@@ -16,7 +16,7 @@ tags:
 
 Ubuntu上一个命令就够了
 
-  sudo apt-get install git-core
+    sudo apt-get install git-core
 
 Windows用户去[这里](http://msysgit.github.io/)下载.
 
