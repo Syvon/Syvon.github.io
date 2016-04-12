@@ -16,7 +16,6 @@ tags:
 
   public class HttpUtil {
     public static void sendHttpRequest(final String address) {  
-
           HttpURLConnection connection = null;
           try {
             URL url = new URL(address);
@@ -53,6 +52,7 @@ tags:
 以后每当需要发起一条 HTTP 请求的时候就可以这样写：
 
   String address = "http://www.baidu.com";
+
   String response = HttpUtil.sendHttpRequest(address);
 
 在获取到服务器响应的数据后我们就可以对它进行解析和处理了。但是需要注意，网络请求通常都是属于耗时操作，而 sendHttpRequest()方法的内部并没有开启线程，这样就有可能导致在调用 sendHttpRequest()方法的时候使得主线程被阻塞住。
