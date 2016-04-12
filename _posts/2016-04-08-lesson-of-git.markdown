@@ -64,6 +64,7 @@ Windows用户去[这里](http://msysgit.github.io/)下载.
 已经执行过 add 命令的文件，应该先对其取消添加，然后才可以撤回提交。
 
   git reset HEAD test.txt
+  
   git checkout test.txt 
 
 #### 查看提交记录
@@ -97,7 +98,7 @@ Windows用户去[这里](http://msysgit.github.io/)下载.
   git push origin master //把本地修改的内容同步到远程版本库上
 
   git fetch origin master //将远程版本库上的代码同步到本地，不过同步下来的代码并不会合并到任何分支上去，而是会存放在到一个 origin/master 分支上
-  
+
   git merge origin/master //merge 命令将 origin/master 分支上的修改合并到主分支上
 
   git pull origin master //pull 命令则是相当于将 fetch 和 merge 这两个命令放在一起执行了，它可以从远程版本库上获取最新的代码并且合并到本地
