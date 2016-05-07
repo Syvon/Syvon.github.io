@@ -10,7 +10,9 @@ tags:
     - 自定义控件
 ---
 
-## 实现自定义控件的方法
+## 实现自定义控件
+
+实现自定义控件的三种方法
 
 - 对现有控件进行扩展
 
@@ -43,7 +45,7 @@ tags:
         //绘制文本内容后
     }
 
-1. 绘制TextView的背景
+绘制TextView的背景
 
 	@Override
     protected void onDraw(Canvas canvas) {
@@ -69,7 +71,7 @@ tags:
         canvas.restore();
     }
 
-2. 实现动态文字的闪动效果
+实现动态文字的闪动效果
 
 	@Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
