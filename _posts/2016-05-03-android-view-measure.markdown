@@ -30,9 +30,9 @@ Android中提供了一个MeasureSpec类，来帮助我们测量View。MeasureSpe
 
 View类的onMeasure()方法只支持EXACTLY模式，所以如果在自定义控件的时候不重写onMeasure()方法，就只能使用EXACTLY模式。如果要让自定义View支持wrap_content属性，那么就必须重写onMeasure()方法来指定wrp_content时的大小。
 
-###自己动手实现一个自定义View
+### 自己动手实现一个自定义View
 
-####View是如何进行测量的
+#### View是如何进行测量的
 
 查看View的源代码，可以知道系统最终会调用setMeasuredDimension()方法将测量后的宽高值设置进去，完成测量工作。
 
