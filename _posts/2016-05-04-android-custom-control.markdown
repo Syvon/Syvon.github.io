@@ -36,7 +36,7 @@ tags:
 
 创建一个自定义View，难点在于绘制控件和实现交互。通常需要继承View类，并重写它的onDraw(),onMeasure()等方法来实现绘制逻辑，同时通过重写onTouchEvent()等触控事件来实现交互逻辑。
 
-弧线展示图
+#### 弧线展示图
 
 ![java-javascript](/img/in-post/android-heros/android-arc.png)
 <small class="img-hint">比例图</small>
@@ -86,7 +86,7 @@ tags:
     CircleProgressView circle = (CircleProgressView) findViewById(R.id.circle);
     circle.setSweepValue(65);
 
-音频条形图
+#### 音频条形图
 
 ![java-javascript](/img/in-post/android-heros/android-audio.png)
 <small class="img-hint">音频条形图</small>
