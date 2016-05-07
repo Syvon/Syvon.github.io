@@ -1,7 +1,7 @@
 ---
 layout:     post
-title:      "创建自定义控件"
-subtitle:   "创建复合控件2"
+title:      "创建自定义控件2"
+subtitle:   "创建复合控件"
 date:       2016-05-04
 author:     "WunWun"
 header-img: "img/in-post/android-heros/android-hello.jpg"
@@ -10,7 +10,9 @@ tags:
     - 自定义控件
 ---
 
-## 实现自定义控件的方法
+## 实现自定义控件
+
+实现自定义控件的三种方法
 
 - 对现有控件进行扩展
 
@@ -37,7 +39,7 @@ tags:
 
 下面我们创建一个TopBar。
 
-1. 定义属性
+- 定义属性
 
 在res资源目录的values目录下创建一个attrs.xml的属性定义文件，为View提供可自定义的属性。
 
@@ -57,7 +59,7 @@ tags:
 	</resources>
 在代码中通过 <declare-styleable> 标签声明了使用自定义属性，并通过name属性来确定引用的名称，最后通过<attr>标签来声明具体的自定义属性。
 
-2. 创建自定义控件
+- 创建自定义控件
 
 创建好属性之后，就可以创建一个自定义控件-TopBar，并让它继承自ViewGroup，从而组合一些需要的控件。
 
@@ -222,7 +224,7 @@ tags:
 	    }
 	}
 
-3. 实现接口回调
+- 实现接口回调
 
 在调用者的代码中，调用者需要实现这样一个接口，并完成接口中的方法，确定具体的实现逻辑，并使用第二步中暴露的方法，将接口的对象传递进去，从而完成回调。通常情况下，可以使用匿名内部类的形式来实现接口中的方法。
 
@@ -247,7 +249,7 @@ tags:
     mTopbar.setButtonVisable(0, true);
     mTopbar.setButtonVisable(1, false);
 
-4. 引用UI模板
+- 引用UI模板
 
 在需要使用的地方引用UI模板。在引用前，需要指定引用第三方控件的名字空间。
 
@@ -277,7 +279,7 @@ tags:
         custom:titleTextColor="#123412"
         custom:titleTextSize="10sp"/>
 
-5. 将UI模板写入到布局文件中
+- 将UI模板写入到布局文件中
 
 可以更进一步，将UI模板写入到布局文件中。
 
