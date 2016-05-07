@@ -18,7 +18,7 @@ ViewGroup存在的目的就是为了对其子View进行管理，为其子View添
 
 ### 实现一个类似ScrollView的ViewGroup
 
-1. 首先放置好ViewGroup的子View，使用遍历的方式来通知子View对自身进行测量。
+首先放置好ViewGroup的子View，使用遍历的方式来通知子View对自身进行测量。
 
 	@Override
     protected void onMeasure(int widthMeasureSpec,
@@ -32,14 +32,14 @@ ViewGroup存在的目的就是为了对其子View进行管理，为其子View添
         }
     }
 
-2. 确定整个ViewGroup的高度。在这里我们让每个子View占一屏的高度，整个ViewGroup的高度即子View的个数乘以屏幕的高度。
+确定整个ViewGroup的高度。在这里我们让每个子View占一屏的高度，整个ViewGroup的高度即子View的个数乘以屏幕的高度。
 
     // 设置ViewGroup的高度
     MarginLayoutParams mlp = (MarginLayoutParams) getLayoutParams();
     mlp.height = mScreenHeight * childCount;
     setLayoutParams(mlp);
 
-3. 通过遍历的方式来设定每个子View需要放置的位置，直接通过调用子View的layout()方法，并将具体的位置作为参数传递进去即可。
+通过遍历的方式来设定每个子View需要放置的位置，直接通过调用子View的layout()方法，并将具体的位置作为参数传递进去即可。
 
 	@Override
     protected void onLayout(boolean changed,
@@ -58,7 +58,7 @@ ViewGroup存在的目的就是为了对其子View进行管理，为其子View添
         }
     }
 
-4. 现在已经将子View放置到ViewGroup中了 ，但还不能响应任何触控事件。因此需要重写onTouchEvent()方法，为ViewGroup添加响应事件，用scrollBy()方法来辅助滑动。
+现在已经将子View放置到ViewGroup中了 ，但还不能响应任何触控事件。因此需要重写onTouchEvent()方法，为ViewGroup添加响应事件，用scrollBy()方法来辅助滑动。
 
 	@Override
     public boolean onTouchEvent(MotionEvent event) {
@@ -88,7 +88,7 @@ ViewGroup存在的目的就是为了对其子View进行管理，为其子View添
         return true;
     }
 
-5. 在ACTION_UP事件中判断手指滑动的距离，如果超过一定距离，则使用Scroller类来平滑到下一个子View；如果小于一定距离，则回滚到原来的位置。
+在ACTION_UP事件中判断手指滑动的距离，如果超过一定距离，则使用Scroller类来平滑到下一个子View；如果小于一定距离，则回滚到原来的位置。
 
 	case MotionEvent.ACTION_UP:
     int dScrollY = checkAlignment();
