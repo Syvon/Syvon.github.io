@@ -6,17 +6,17 @@ date:       2016-05-07
 author:     "WunWun"
 header-img: "img/android-rain.jpg"
 tags:
-    - Android
-    - ListView
+    Android
+    ListView
 ---
 
 ## ListView常用优化技巧
 
-    - #### 使用ViewHolder模式提高效率   
+    #### 使用ViewHolder模式提高效率   
 
     ViewHolder模式充分利用ListView的视图缓存机制，避免了每次在调用getView()的时候都去通过findViewById()实例化控件。使用ViewHolder非常简单，只需要在自定义Adapter中定义一个内部类ViewHolder，并将布局中的控件作为成员变量。   
 
-    - #### 设置项目间分隔线 
+    #### 设置项目间分隔线 
 
     ListView各个项目之间可以通过设置分割线来区分，系统提供了divider和dividerHeight这样两个属性来帮助我们实现这一功能。 
 
@@ -27,19 +27,19 @@ tags:
 
         android:divider="null"  
 
-    - #### 隐藏ListView的滚动条   
+    #### 隐藏ListView的滚动条   
 
     设置scrollbars属性为none的时候，就不会出现滚动条。    
 
         android:scrollbars="none"   
 
-    - #### 取消ListView的Item点击效果  
+    #### 取消ListView的Item点击效果  
 
     可以通过修改listSelector属性来取消掉点击后的效果  
 
         android:listSelector="#00000000"    
 
-    - #### 设置ListView显示在第几项 
+    #### 设置ListView显示在第几项 
 
     当需要指定具体显示的Item时，可以通过如下代码实现。 
 
@@ -51,12 +51,12 @@ tags:
         listView.smoothScrollByOffset(offset);
         listView.smoothScrollToPosition(index); 
 
-    - #### 动态修改ListView 
+    #### 动态修改ListView 
 
         mData.add("new data");
         mAdapter.notifyDataSetChanged();    
 
-    - #### 遍历ListView中的所有item   
+    #### 遍历ListView中的所有item   
 
     ListView作为一个ViewGroup，为我们提供了操纵子View的各种方法。   
 
@@ -64,9 +64,9 @@ tags:
             View view = mListView.getChildAt(i);
         }   
 
-    - #### ListView滑动监听 
+    #### ListView滑动监听 
 
-        - ##### OnTouchListener 
+        ##### OnTouchListener 
 
         OnTouchListner是View中的监听事件，通过监听ACTION_DOWN，ACTION_MOVE，ACTION_UP这三个事件发生的时的坐标，就可以根据坐标判断用户滑动的方向，并在不同的条件下进行相应的逻辑处理。 
 
@@ -88,7 +88,7 @@ tags:
               }
           });   
 
-        - ##### OnScrollListener    
+        ##### OnScrollListener    
 
         OnScrollListener是ABSListView中的监听事件。 
 
@@ -129,7 +129,7 @@ tags:
 
 ## ListView常用扩展
 
-    - #### 自动隐藏 Toolbar
+    #### 自动隐藏 Toolbar
 
     首先需要给ListView增加一个HeaderView，避免第一个Item被Toolbar遮挡。通过R.dimen.abc_action_bar_default_height_material属性获取Actionbar的高度，并设置给HeaderView。
 
@@ -151,9 +151,9 @@ tags:
                         break;
                     case MotionEvent.ACTION_MOVE:
                         mCurrentY = event.getY();
-                        if (mCurrentY - mFirstY > mTouchSlop) {
+                        if (mCurrentY mFirstY > mTouchSlop) {
                             direction = 0;// down
-                        } else if (mFirstY - mCurrentY > mTouchSlop) {
+                        } else if (mFirstY mCurrentY > mTouchSlop) {
                             direction = 1;// up
                         }
                         if (direction == 1) {
