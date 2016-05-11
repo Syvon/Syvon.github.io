@@ -69,7 +69,8 @@ MotionEvent封装了一些常用的事件常量，它定义了触控事件的不
 
 ### 获取坐标值的各种方法
 
-
+![java-javascript](/img/in-post/android-heros/android-get-coordinate.jpg)
+<small class="img-hint">各种获取坐标方法的对比</small>
 
 - View提供的获取坐标方法
 
