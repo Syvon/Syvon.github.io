@@ -1,7 +1,7 @@
 ---
 layout:     post
-title:      "Android 绘图机制"
-subtitle:   ""
+title:      "Android图像处理之画笔特效处理"
+subtitle:   "PorterDuffXfermode，Shader，PathEffect"
 date:       2016-05-11
 author:     "WunWun"
 header-img: "img/in-post/android-heros/android-deal-picture.jpg"
