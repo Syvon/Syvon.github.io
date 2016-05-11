@@ -74,7 +74,7 @@ tags:
 
 这个方法相当于提供的一个对左右，上下移动的API的封装。当计算出偏移量后，只需要使用如下代码就可以完成View的重新布局。
 
-@Override
+    @Override
     public boolean onTouchEvent(MotionEvent event) {
         int x = (int) event.getX();
         int y = (int) event.getY();
@@ -150,8 +150,10 @@ scrollTo()与scrollBy()移动的时View的content，即让View的内容移动。
 
 - 初始化Scroller
 
+初始化Scroller
+
     private Scroller mScroller;
-    // 初始化Scroller
+    //初始化Scroller
     mScroller = new Scroller(context);
 
 - 重写computeScroll()方法，实现模拟滑动
@@ -172,6 +174,8 @@ scrollTo()与scrollBy()移动的时View的content，即让View的内容移动。
     }
 
 - startScroll开启模拟过程
+
+手指离开时，执行滑动过程
 
     case MotionEvent.ACTION_UP:
         // 手指离开时，执行滑动过程
