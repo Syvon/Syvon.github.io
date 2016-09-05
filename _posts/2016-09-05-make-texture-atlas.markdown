@@ -38,40 +38,43 @@ Let's go.
 
 - Create a new texture,and save it.
 
-![java-javascript](/img/in-post/make-a-texture-atlas/4.png)
-<small class="img-hint">create a new texture</small>
-
-- In the bake mode,select the "Textures",and click the Bake.You will find a texture atlas.Amazing,isn't it? Now save it.
-
 ![java-javascript](/img/in-post/make-a-texture-atlas/5.png)
 <small class="img-hint">bake the texture atlas</small>
 
-- Delete the origin UV map.
+- In the bake mode,select the "Textures",and click the Bake.You will find a texture atlas.Amazing,isn't it? Now save it.
 
 ![java-javascript](/img/in-post/make-a-texture-atlas/6.png)
 <small class="img-hint">delete the origin UV map</small>
 
-- Delete all the origin materials.
+- Delete the origin UV map.
 
 ![java-javascript](/img/in-post/make-a-texture-atlas/7.png)
+<small class="img-hint">delete the origin UV map</small>
+
+- Delete all the origin materials.
+
+![java-javascript](/img/in-post/make-a-texture-atlas/8.png)
 <small class="img-hint">delete all the origin materials</small>
 
 - Create a new material.
 
-![java-javascript](/img/in-post/make-a-texture-atlas/8.png)
-<small class="img-hint">create a new material</small>
+![java-javascript](/img/in-post/make-a-texture-atlas/9.png)
+<small class="img-hint">Create a new material</small>
 
 - Create a new texture with the texture atlas which you saved before.
 
-![java-javascript](/img/in-post/make-a-texture-atlas/9.png)
+![java-javascript](/img/in-post/make-a-texture-atlas/10.png)
 <small class="img-hint">Create a new texture</small>
+
+![java-javascript](/img/in-post/make-a-texture-atlas/11.png)
+<small class="img-hint">open an image</small>
 
 - Now you see the magic.
 
-![java-javascript](/img/in-post/make-a-texture-atlas/10.png)
-<small class="img-hint">create a new UV maps</small>
+![java-javascript](/img/in-post/make-a-texture-atlas/12.png)
+<small class="img-hint"></small>
 
-Texture atlases can greatly reduce the number of draw calls and state changes, so they are an obvious and necessary optimization. Have a try.
+Texture atlases can greatly reduce the number of draw calls and state changes, so they are an obvious and necessary optimization. [Have a try](https://www.youtube.com/watch?v=3jJGBzAxXKo).
 
 #### 著作权声明
   
