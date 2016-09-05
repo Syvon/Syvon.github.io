@@ -1,10 +1,10 @@
 ---
 layout:     post
 title:      "How to make a texture atlas in Blender"
-subtitle:   "
+subtitle:   ""
 date:       2016-09-05
 author:     "WunWun"
-header-img: "/img/in-post/make-a-texture-atlas/texture-atlas.jpg"
+header-img: "img/in-post/make-a-texture-atlas/texture-atlas.jpg"
 tags:
     - Texture Atlas
 ---
