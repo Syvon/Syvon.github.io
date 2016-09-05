@@ -34,17 +34,17 @@ Let's go.
 - Press "u",and select the "Smart UV project",then click OK.
 
 ![java-javascript](/img/in-post/make-a-texture-atlas/3.png)
-<small class="img-hint">amart UV project</small>
+<small class="img-hint">Smart UV project</small>
 
 - Create a new texture,and save it.
 
 ![java-javascript](/img/in-post/make-a-texture-atlas/5.png)
-<small class="img-hint">bake the texture atlas</small>
+<small class="img-hint">Create a new texture</small>
 
 - In the bake mode,select the "Textures",and click the Bake.You will find a texture atlas.Amazing,isn't it? Now save it.
 
 ![java-javascript](/img/in-post/make-a-texture-atlas/6.png)
-<small class="img-hint">delete the origin UV map</small>
+<small class="img-hint">bake a texture atlas</small>
 
 - Delete the origin UV map.
 
