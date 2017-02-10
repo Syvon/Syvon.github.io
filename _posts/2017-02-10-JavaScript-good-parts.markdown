@@ -4,7 +4,7 @@ title:      "JavaScript good parts"
 subtitle:   ""
 date:       2017-02-10
 author:     "WunWun"
-header-img: "img/in-post/js-the-good-parts/Javascript-shopping-cart.png"
+header-img: "img/in-post/js-the-good-parts/Javascript-shopping-cart.jpg"
 tags:
     - JavaScript
 ---
