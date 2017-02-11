@@ -1,0 +1,75 @@
+---
+layout:     post
+title:      "JavaScript Arrays"
+subtitle:   ""
+date:       2017-02-11
+author:     "WunWun"
+header-img: "img/in-post/js-the-good-parts/Javascript-good-parts.png"
+tags:
+    - JavaScript
+---
+
+
+JavaScript提供了一种拥有一些类数组（array-like)特性的对象。它把数组的下标转变为字符串，用其作为属性。
+
+## 数组字面量
+
+一个数组字面量是在一对方括号中包围零个或多个用逗号分隔的值的表达式。数组的第一个值将获得属性名‘0’，第二个值将获得属性名‘1’，以此类推。
+
+```
+var empty = [];
+var numbers = [
+    'zero', 'one', 'two', 'three', 'four',
+    'five', 'six', 'seven', 'eight', 'nine'
+];
+```
+
+JavaScript允许数组包含任意混合类型的值。
+
+## 长度
+
+JavaScript中，每个数组都有一个length属性。
+
+数组的length是没有上界的。如果你用大于或等于当前length的数字作为下标来存储一个元素，那么length值会被增大以容纳新元素，不会发生数组越界错误。
+
+length属性的值是这个数组的最大整数属性名加上1.它不一定等于数组里的属性的个数。
+
+你可以直接设置length的值。设置更大的length不会给数组分配更多的空间。而把length设小将导致所有下标大于等于新length的属性被删除。
+
+## 删除
+
+由于JavaScript的数组其实就是对象，所以`delete`运算符可以用来从数组中移除元素。不幸的是，这样会在数组中留下一个空洞。这是因为排在被删除元素之后的元素保留着它们最初的属性。
+
+```
+numbers = ['zero', 'one', 'two', 'shi', 'go'];
+
+delete numbers[2];
+// 现在numbers为['zero', 'one', undefined, 'shi', 'go']
+```
+
+JavaScript的数组有一个splice方法，可以删除一些元素并将它们替换为其他的元素。
+
+```
+numbers.splice(2, 1);
+// 现在numbers为['zero', 'one', 'shi', 'go']
+```
+
+## 枚举
+
+不建议使用for in语句来遍历一个数组的所有属性。
+
+## 容易混淆的地方
+
+在JavaScript编程中，一个常见的错误是在必须使用数组时使用了对象，或者在必须使用对象时使用了数组。其实规则很简单：当属性名是小而连续的整数时，应该使用数组，否则使用对象。
+
+由于对数组使用typeof的结果为object，所以需要其他方法来判别一个变量是否为数组：
+
+```
+var is_array = function (value) {
+    return Object.prototype.toString.apply(value) === '[object Array]';
+};
+```
+
+#### 著作权声明
+  
+作者 [陈兴旺](http://weibo.com/xingwangchan)，首次发布于 [WunWun Blog](http://iwun.github.io/)，转载请保留以上链接
