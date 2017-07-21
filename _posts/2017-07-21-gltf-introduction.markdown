@@ -2,7 +2,7 @@
 layout:     post
 title:      "GLTF 介绍"
 subtitle:   "GLTF系列教程01"
-date:       2017-02-11
+date:       2017-07-21
 author:     "WunWun"
 header-img: "img/in-post/gltf/gltf.png"
 tags:
