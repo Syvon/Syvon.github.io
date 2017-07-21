@@ -4,7 +4,7 @@ title:      "GLTF 介绍"
 subtitle:   "GLTF系列教程01"
 date:       2017-02-11
 author:     "WunWun"
-header-img: "img/in-post/gltf.png"
+header-img: "img/in-post/gltf/gltf.png"
 tags:
     - JavaScript
 ---
@@ -16,10 +16,8 @@ tags:
 
 基于3D内容的应用和服务越来越多。 在线商店提供3D预览的产品配置器。 博物馆正在使用3D扫描将他们的工件数字化，并允许在虚拟画廊中探索他们的收藏品。 城市规划者使用3D城市模型进行规划和信息可视化。 教育者正在创造人体的交互式动画3D模型。 许多这些应用程序直接在Web浏览器中运行，这是可能的，因为所有现代浏览器都支持使用WebGL高效渲染。
 
-<p align="center">
-<img src="../img/in-post/gltf/applications.png" /><br>
-<a name="applications-png"></a>图 1a: 来自不同网站和应用的三维模型截图
-</p>
+![java-javascript](/img/in-post/gltf/applications.png)
+<small class="img-hint">图 1a: 来自不同网站和应用的三维模型截图</small>
 
 因此，在各种应用中，对3D内容有一种强烈且不断增长的需求。 在许多情况下，3D内容必须通过web传输，并且必须在客户端有效地呈现。 但是到目前为止，在3D内容创建和在运行时应用程序中的高效渲染之间存在差距。
 
@@ -34,10 +32,9 @@ tags:
 
 为了呈现这样的3D内容，运行时应用程序必须能够读取不同的输入文件格式， 解析场景结构，并且必须将3D几何数据转换为图形API所需的格式。 3D数据必须被传送到显卡存储器，然后可以调用图形API来描述呈现过程。 因此，每个运行时应用程序必须为其想要支持的所有文件格式创建导入器，加载器或转换器：
 
-<p align="center">
-<img src="../img/in-post/gltf/contentPipeline.png" /><br>
-<a name="contentPipeline-png"></a>图 1b: 目前的3D内容流水线
-</p>
+
+![java-javascript](/img/in-post/gltf/contentPipeline.png)
+<small class="img-hint">图 1b: 目前的3D内容流水线</small>
 
 
 ### glTF: 3D场景的传输格式
@@ -51,10 +48,10 @@ glTF的目标是定义一种表示3D内容的标准，这种形式适合在运�
 
 不同的内容创建工具现在可以提供glTF格式的3D内容。 如 [图1b](#applications-png)所示，越来越多的客户端应用程序能够使用和渲染glTF。 所以glTF可以帮助弥合内容创建和渲染之间的差距： 
 
-<p align="center">
-<img src="../img/in-post/gltf/contentPipelineWithGltf.png" /><br>
-<a name="contentPipelineWithGltf-png"></a>图 1c: glTF的3D内容流水线
-</p>
+
+![java-javascript](/img/in-post/gltf/contentPipelineWithGltf.png)
+<small class="img-hint">图 1c: glTF的3D内容流水线</small>
+
 
 越来越多的内容创建工具将能够直接提供glTF。 或者可以使用 [Khronos glTF](https://github.com/KhronosGroup/glTF#converters) 存储库中列出的开源转换实用程序，由其他文件格式来创建glTF资产。 例如，几乎所有创作应用程序都可以以 [COLLADA](https://www.khronos.org/collada/) 格式导出其场景 因此， [COLLADA2GLTF](https://github.com/KhronosGroup/glTF/tree/master/COLLADA2GLTF) 工具可以用于将场景和模型从这些创作应用程序转换为glTF。 `OBJ`文件可以使用 [obj2gltf](https://github.com/AnalyticalGraphicsInc/obj2gltf)转换为glTF。 对于其他文件格式，自定义转换器可用于创建glTF资源，从而使3D内容可用于各种运行时应用程序。
 
