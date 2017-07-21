@@ -1,7 +1,7 @@
 ---
 layout:     post
-title:      "JavaScript Methods"
-subtitle:   ""
+title:      "GLTF 介绍"
+subtitle:   "GLTF系列教程01"
 date:       2017-02-11
 author:     "WunWun"
 header-img: "img/in-post/gltf.png"
@@ -17,7 +17,7 @@ tags:
 基于3D内容的应用和服务越来越多。 在线商店提供3D预览的产品配置器。 博物馆正在使用3D扫描将他们的工件数字化，并允许在虚拟画廊中探索他们的收藏品。 城市规划者使用3D城市模型进行规划和信息可视化。 教育者正在创造人体的交互式动画3D模型。 许多这些应用程序直接在Web浏览器中运行，这是可能的，因为所有现代浏览器都支持使用WebGL高效渲染。
 
 <p align="center">
-<img src="img/gltf/applications.png" /><br>
+<img src="../img/in-post/gltf/applications.png" /><br>
 <a name="applications-png"></a>图 1a: 来自不同网站和应用的三维模型截图
 </p>
 
@@ -35,7 +35,7 @@ tags:
 为了呈现这样的3D内容，运行时应用程序必须能够读取不同的输入文件格式， 解析场景结构，并且必须将3D几何数据转换为图形API所需的格式。 3D数据必须被传送到显卡存储器，然后可以调用图形API来描述呈现过程。 因此，每个运行时应用程序必须为其想要支持的所有文件格式创建导入器，加载器或转换器：
 
 <p align="center">
-<img src="img/gltf/contentPipeline.png" /><br>
+<img src="../img/in-post/gltf/contentPipeline.png" /><br>
 <a name="contentPipeline-png"></a>图 1b: 目前的3D内容流水线
 </p>
 
@@ -52,7 +52,7 @@ glTF的目标是定义一种表示3D内容的标准，这种形式适合在运�
 不同的内容创建工具现在可以提供glTF格式的3D内容。 如 [图1b](#applications-png)所示，越来越多的客户端应用程序能够使用和渲染glTF。 所以glTF可以帮助弥合内容创建和渲染之间的差距： 
 
 <p align="center">
-<img src="img/gltf/contentPipelineWithGltf.png" /><br>
+<img src="../img/in-post/gltf/contentPipelineWithGltf.png" /><br>
 <a name="contentPipelineWithGltf-png"></a>图 1c: glTF的3D内容流水线
 </p>
 
