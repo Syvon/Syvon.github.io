@@ -1,0 +1,219 @@
+---
+layout:     post
+title:      "网格"
+subtitle:   "GLTF系列教程08"
+date:       2017-07-22
+author:     "WunWun"
+header-img: "img/in-post/gltf/gltf.png"
+tags:
+    - JavaScript
+---
+
+
+# Meshes
+
+[`mesh`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-mesh)表示出现在场景中的几何对象。在[最小glTF文件](gltfTutorial_003_MinimalGltfFile.md)中，我们已经见过网格的第一个示例。这个示例具有附加到单个节点的单个网格，并且网格由（包含单个属性的）单个 `mesh.primitive`组成——顶点位置的属性。 但通常，网格图元将包含更多的属性，比如顶点法线或纹理坐标。
+
+本节将用一个丰富的示例，更详细地解释网格，网格图元和属性的处理。下面是一个glTF资源，它包含一个具有多属性的简单网格，我们将以此为基础，解释相关概念：
+
+```javascript
+{
+  "scenes" : {
+    "scene0" : {
+      "nodes" : [ "node0", "node1" ]
+    }
+  },
+  "nodes" : {
+    "node0" : {
+      "meshes" : [ "mesh0" ]
+    },
+    "node1" : {
+      "meshes" : [ "mesh0" ],
+      "translation" : [ 1.0, 0.0, 0.0 ]
+    }
+  },
+
+  "meshes" : {
+    "mesh0" : {
+      "primitives" : [ {
+        "attributes" : {
+          "POSITION" : "positionsAccessor",
+          "NORMAL" : "normalsAccessor",
+          "TEXCOORD_0" : "texCoordsAccessor"
+        },
+        "indices" : "indicesAccessor"
+      } ]
+    }
+  },
+
+  "buffers" : {
+    "buffer0" : {
+      "uri" : "data:application/octet-stream;base64,AAABAAIAAAAAAAAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAgD8AAAAAAAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/",
+      "byteLength" : 108
+    }
+  },
+  "bufferViews" : {
+    "indicesBufferView" : {
+      "buffer" : "buffer0",
+      "byteOffset" : 0,
+      "byteLength" : 6,
+      "target" : 34963
+    },
+    "attributesBufferView" : {
+      "buffer" : "buffer0",
+      "byteOffset" : 6,
+      "byteLength" : 96,
+      "target" : 34962
+    }
+  },
+  "accessors" : {
+    "indicesAccessor" : {
+      "bufferView" : "indicesBufferView",
+      "byteOffset" : 0,
+      "componentType" : 5123,
+      "count" : 3,
+      "type" : "SCALAR",
+      "max" : [ 2.0 ],
+      "min" : [ 0.0 ]
+    },
+    "positionsAccessor" : {
+      "bufferView" : "attributesBufferView",
+      "byteOffset" : 0,
+      "componentType" : 5126,
+      "count" : 3,
+      "type" : "VEC3",
+      "max" : [ 1.0, 1.0, 0.0 ],
+      "min" : [ 0.0, 0.0, 0.0 ]
+    },
+    "normalsAccessor" : {
+      "bufferView" : "attributesBufferView",
+      "byteOffset" : 36,
+      "componentType" : 5126,
+      "count" : 3,
+      "type" : "VEC3",
+      "max" : [ 0.0, 0.0, 1.0 ],
+      "min" : [ 0.0, 0.0, 1.0 ]
+    },
+    "texCoordsAccessor" : {
+      "bufferView" : "attributesBufferView",
+      "byteOffset" : 72,
+      "componentType" : 5126,
+      "count" : 3,
+      "type" : "VEC2",
+      "max" : [ 1.0, 1.0 ],
+      "min" : [ 0.0, 0.0 ]
+    }
+  },
+
+  "asset" : {
+    "version" : "1.1"
+  }
+}
+```
+
+这个glTF模型渲染出来是这样的：
+
+
+![java-javascript](/img/in-post/gltf/simpleMeshes.png)
+<small class="img-hint">图 8a:附加到两个节点的网格</small>
+
+
+## 附加到节点的网格
+
+在上面的例子中，场景只有一个，并且该场景包含两个节点（`"node0"` 和 `"node1"`）。两个节点都引用相同的网格实例（`"mesh0"`）：
+
+```javascript
+  "scenes" : {
+    "scene0" : {
+      "nodes" : [ "node0", "node1" ]
+    }
+  },
+  "nodes" : {
+    "node0" : {
+      "meshes" : [ "mesh0" ]
+    },
+    "node1" : {
+      "meshes" : [ "mesh0" ],
+      "translation" : [ 1.0, 0.0, 0.0 ]
+    }
+  },
+
+  "meshes" : {
+    "mesh0" : {
+      ...
+    }
+  },
+```
+
+节点`"node1"`具有`translation`属性。 我们在[Scenes and Nodes](gltfTutorial_004_ScenesNodes.md)中讲过，这将用于计算此节点的局部变换矩阵。 在这种情况下，矩阵将导致图元沿着x轴平移1.0。 节点的所有局部变换的乘积将产生全局变换。 附加到节点的所有元素将使用此全局变换渲染。
+
+因此，在这个例子中，网格将被渲染两次，因为它附加到两个节点：一次是使用`"node0"`的全局变换（这是单位矩阵变换），一次是使用节点`"node1"`的全局变换（ 沿着x轴平移1.0）。
+
+
+### 网格图元
+
+`mesh`包含一个[`mesh.primitive`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-mesh.primitive)对象的数组。 这些`mesh.primitive`对象是较大对象的构建块。 一个`mesh.primitive`总结了关于如何渲染对象相应部分的所有信息。 特别地，网格图元使用其`attributes`字典来定义对象的几何数据，这将在下面解释。
+
+下面的例子包含单个`mesh.primitive`:
+
+```javascript
+"meshes" : {
+  "mesh0" : {
+    "primitives" : [ {
+      "attributes" : {
+        "POSITION" : "positionsAccessor",
+        "NORMAL" : "normalsAccessor",
+        "TEXCOORD_0" : "texCoordsAccessor"
+      },
+      "indices" : "indicesAccessor"
+    } ]
+  }
+},
+```
+
+#### 索引几何和非索引几何
+
+`mesh.primitive`的几何数据可以是索引几何也可以是无索引几何。 示例中的是索引几何，它是由引用`"indicesAccessor"`的`indices`属性表示的。 对于非索引几何，将忽略此属性。
+
+
+#### 网格图元属性
+
+`mesh.primitive`的`attributes`字典中包含有关几何数据的信息。 特别地，它包含对（含有顶点属性数据的）访问器对象的引用。 [Buffers, BufferViews and Accessors](gltfTutorial_005_BuffersBufferViewsAccessors.md)部分已经解释了访问器的详细信息。
+
+在给定的示例中，属性字典中有三个条目。它们分别引用`positionsAccessor`，`normalsAccessor`和`texCoordsAccessor`:
+
+```javascript
+"meshes" : {
+  "mesh0" : {
+    "primitives" : [ {
+      "attributes" : {
+        "POSITION" : "positionsAccessor",
+        "NORMAL" : "normalsAccessor",
+        "TEXCOORD_0" : "texCoordsAccessor"
+      },
+      "indices" : "indicesAccessor"
+    } ]
+  }
+},
+```
+
+如图所示，这些访问器的元素组合在一起，定义了属于单个顶点的所有属性：
+
+
+![java-javascript](/img/in-post/gltf/meshPrimitiveAttributes.png)
+<small class="img-hint">图 8b: 包含顶点数据的网格图元访问器</small>
+
+
+#### 网格图元模式  
+
+默认情况下，几何数据被假定为描述三角形网格。对于 *索引*几何的情况，这意味着索引访问器的三个连续元素被假定为包含单个三角形的索引。 对于非索引几何，顶点属性访问器的三个元素被假定为包含三角形的三个顶点的属性。
+
+除了三角形之外，还有其他渲染模式：几何数据还可以描述点，线或三角形带。 这是由存储在网格图元中的`模式`指示的：其值是指示如何解释几何数据的常数。 例如，当几何形状由点组成时，模式可以是0；当由三角形组成时，模式可以是4； 有关可用模式的列表，请参阅[`primitive.mode` 规范](https://github.com/KhronosGroup/glTF/tree/master/specification#primitivemode)。
+
+#### 网格图元材质
+
+网格图元还可以引用材质。在给定的示例中，没有定义材质，这使得对象用默认的50％灰色来渲染。材质的详细解释和相关概念将在下一节[Materials](gltfTutorial_009_Materials.md)中给出。
+
+#### 著作权声明
+  
+作者 [陈兴旺](http://weibo.com/xingwangchan)，首次发布于 [WunWun Blog](http://iwun.github.io/)，转载请保留以上链接
