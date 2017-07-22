@@ -10,6 +10,8 @@ tags:
 ---
 
 
+又复习了一下GLTF模型，发现了一个很好的英文教程，讲解的非常详细。没有图形学知识背景的人也可以听懂。学习的时候，就顺便翻译成中文，来和大家分享 。当然，更推荐看[英文教程](https://github.com/javagl/glTF-Tutorials/tree/master/gltfTutorial#gltf-tutorial)。
+
 # glTF 的基本结构
 
 glTF的核心是一个JSON文件。 此文件描述3D场景的全部内容。它通过定义场景图的节点层次结构来描述场景结构。 使用附加到节点的网格（meshes）定义场景中出现的3D对象。 材质（Materials ）定义对象的外观。 动画（Animations ）描述了3D对象如何随时间变换（例如，旋转到平移），并且皮肤（skins ）定义基于骨架姿势对象的几何如何变形。 摄像机描述了渲染器的视图配置。
@@ -92,7 +94,7 @@ A [`buffer`](https://github.com/KhronosGroup/glTF/tree/master/specification#refe
 }
 ```
 
-该二进制数据仅仅是从 `buffer` 的URI读取的存储器的原始块，没有固有含义或结构。  [Buffers, BufferViews and Accessors](gltfTutorial_007_BuffersBufferViewsAccessors.md)部分将介绍如何使用有关数据类型和数据布局的信息扩展原始数据。利用该信息，数据的一部分可能被解释为动画数据，另一部分可能被解释为几何数据。相比于在JSON格式中存储，以二进制形式存储数据可以更有效地在Web上传输，并且二进制数据可以直接传递到渲染器，而不必对其进行解码或预处理。
+该二进制数据仅仅是从 `buffer` 的URI读取的存储器的原始块，没有固有含义或结构。  [Buffers, BufferViews and Accessors](2017-07-22-BuffersBufferViewsAccessors.markdown)部分将介绍如何使用有关数据类型和数据布局的信息扩展原始数据。利用该信息，数据的一部分可能被解释为动画数据，另一部分可能被解释为几何数据。相比于在JSON格式中存储，以二进制形式存储数据可以更有效地在Web上传输，并且二进制数据可以直接传递到渲染器，而不必对其进行解码或预处理。
 
 
 
