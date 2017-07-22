@@ -1,16 +1,17 @@
 ---
 layout:     post
-title:      "GLTF 基本结构"
-subtitle:   "GLTF系列教程02"
+title:      "glTF 基本结构"
+subtitle:   "glTF系列教程02"
 date:       2017-07-21
 author:     "WunWun"
 header-img: "img/in-post/gltf/gltf.png"
 tags:
-    - JavaScript
+    - glTF
+    - WebGL
 ---
 
 
-又复习了一下GLTF模型，发现了一个很好的英文教程，讲解的非常详细。没有图形学知识背景的人也可以听懂。学习的时候，就顺便翻译成中文，来和大家分享 。当然，更推荐看[英文教程](https://github.com/javagl/glTF-Tutorials/tree/master/gltfTutorial#gltf-tutorial)。
+又复习了一下glTF模型，发现了一个很好的英文教程，讲解的非常详细。没有图形学知识背景的人也可以听懂。学习的时候，就顺便翻译成中文，来和大家分享 。当然，更推荐看[英文教程](https://github.com/javagl/glTF-Tutorials/tree/master/gltfTutorial#gltf-tutorial)。
 
 # glTF 的基本结构
 

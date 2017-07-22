@@ -1,16 +1,17 @@
 ---
 layout:     post
-title:      "最小的GLTF文件"
-subtitle:   "GLTF系列教程03"
+title:      "最小的glTF文件"
+subtitle:   "glTF系列教程03"
 date:       2017-07-22
 author:     "WunWun"
 header-img: "img/in-post/gltf/gltf.png"
 tags:
-    - JavaScript
+    - glTF
+    - WebGL
 ---
 
 
-又复习了一下GLTF模型，发现了一个很好的英文教程，讲解的非常详细。没有图形学知识背景的人也可以听懂。学习的时候，就顺便翻译成中文，来和大家分享 。当然，更推荐看[英文教程](https://github.com/javagl/glTF-Tutorials/tree/master/gltfTutorial#gltf-tutorial)。
+又复习了一下glTF模型，发现了一个很好的英文教程，讲解的非常详细。没有图形学知识背景的人也可以听懂。学习的时候，就顺便翻译成中文，来和大家分享 。当然，更推荐看[英文教程](https://github.com/javagl/glTF-Tutorials/tree/master/gltfTutorial#gltf-tutorial)。
 
 
 # 一个最小的 glTF 文件
