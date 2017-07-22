@@ -10,9 +10,12 @@ tags:
 ---
 
 
+又复习了一下GLTF模型，发现了一个很好的英文教程，讲解的非常详细。没有图形学知识背景的人也可以听懂。学习的时候，就顺便翻译成中文，来和大家分享 。当然，更推荐看[英文教程](https://github.com/javagl/glTF-Tutorials/tree/master/gltfTutorial#gltf-tutorial)。
+
+
 # Animations
 
-如[Simple animation](gltfTutorial_005_SimpleAnimation.md)所示， [`animation`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-animation)可用于描述节点的`translation`, `rotation` 或 `scale`属性如何随时间变化。
+如[Simple animation](2017-07-22-SimpleAnimation.markdown)所示， [`animation`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-animation)可用于描述节点的`translation`, `rotation` 或 `scale`属性如何随时间变化。
 
 下面是`animation`的另一个例子。 这一次，动画包含两个通道。 一个通道用于动画的平移，另一个通道用于动画节点的旋转：
 

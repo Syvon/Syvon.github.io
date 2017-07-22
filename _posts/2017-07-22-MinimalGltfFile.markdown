@@ -10,6 +10,9 @@ tags:
 ---
 
 
+又复习了一下GLTF模型，发现了一个很好的英文教程，讲解的非常详细。没有图形学知识背景的人也可以听懂。学习的时候，就顺便翻译成中文，来和大家分享 。当然，更推荐看[英文教程](https://github.com/javagl/glTF-Tutorials/tree/master/gltfTutorial#gltf-tutorial)。
+
+
 # 一个最小的 glTF 文件
 
 下面的glTF资源包含一个单一的三角形，虽然小但是完整。 您可以将其复制并粘贴到一个`gltf` 文件中，每个基于glTF的应用程序都应该能够加载和渲染它。 本节将基于这个例子，解释glTF的基本概念。
@@ -110,7 +113,7 @@ tags:
   },
 ```
 
-关于场景和节点及其属性的更多细节将在关于 [场景和节点](gltfTutorial_004_ScenesNodes.md) 部分中介绍。
+关于场景和节点及其属性的更多细节将在关于 [场景和节点](2017-07-22-ScenesNodes.markdown) 部分中介绍。
 
 ## `meshes`
 
@@ -133,15 +136,15 @@ tags:
   },
 ```
 
-关于网格和网格图元的更详细的描述可以 [Meshes](gltfTutorial_007_Meshes.md) 部分找到。
+关于网格和网格图元的更详细的描述可以 [Meshes](2017-07-22-Meshes.markdown) 部分找到。
 
 ##  `buffer`， `bufferView` 和 `accessor` 的概念
 
-`buffer`， `bufferView` 和 `accessor` 对象提供关于网格图元所包括的几何数据的信息。基于具体示例，在此快速介绍它们。 关于这些概念的更详细的描述将在 [Buffers, BufferViews and Accessors](gltfTutorial_005_BuffersBufferViewsAccessors.md) 部分中给出。
+`buffer`， `bufferView` 和 `accessor` 对象提供关于网格图元所包括的几何数据的信息。基于具体示例，在此快速介绍它们。 关于这些概念的更详细的描述将在 [Buffers, BufferViews and Accessors](2017-07-22-BuffersBufferViewsAccessors.markdown) 部分中给出。
 
 ### Buffers
 
-[`buffer`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-buffer) 定义了没有固有含义的原始非结构化数据块。 它包含了一个 `uri`，可以指向包含数据的外部文件，也可以是直接在JSON文件中对二进制数据进行编码的 [data URI](gltfTutorial_002_BasicGltfStructure.md#binary-data-in-data-uris) 。
+[`buffer`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-buffer) 定义了没有固有含义的原始非结构化数据块。 它包含了一个 `uri`，可以指向包含数据的外部文件，也可以是直接在JSON文件中对二进制数据进行编码的 [data URI](2017-07-21-gltf-BasicGltfStructure.markdown#binary-data-in-data-uris) 。
 
 在这个例子中，用的就是第二种方法： `"buffer0"` 中包含编码为 `data URI` 的42字节数据。
 
@@ -226,7 +229,7 @@ tags:
   },
 ```
 
-当要渲染 `mesh.primitive` 时，渲染器可以解析底层缓冲区视图和缓冲区，并将缓冲区的所需部分连同关于数据类型和布局的信息一起发送到渲染器。关于渲染器如何获取和处理访问器数据的更详细描述，可以参见 [Buffers, BufferViews and Accessors](gltfTutorial_005_BuffersBufferViewsAccessors.md) 和 [Materials and Techniques](gltfTutorial_009c_MaterialsTechniques.md)
+当要渲染 `mesh.primitive` 时，渲染器可以解析底层缓冲区视图和缓冲区，并将缓冲区的所需部分连同关于数据类型和布局的信息一起发送到渲染器。关于渲染器如何获取和处理访问器数据的更详细描述，可以参见 [Buffers, BufferViews and Accessors](2017-07-22-BuffersBufferViewsAccessors.markdown) 和 [Materials and Techniques]()
 
 
 
