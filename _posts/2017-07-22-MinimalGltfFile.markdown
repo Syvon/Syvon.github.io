@@ -1,7 +1,7 @@
 ---
 layout:     post
-title:      "GLTF 介绍"
-subtitle:   "GLTF系列教程01"
+title:      "最小的GLTF文件"
+subtitle:   "GLTF系列教程03"
 date:       2017-07-22
 author:     "WunWun"
 header-img: "img/in-post/gltf/gltf.png"
