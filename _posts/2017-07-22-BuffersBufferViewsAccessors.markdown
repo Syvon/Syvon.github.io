@@ -15,11 +15,11 @@ tags:
 
 # Buffers, BufferViews, Accessors
 
-`buffer`, `bufferView` 和 `accessor` 的示例已经 [最小glTF文件](2017-07-22-MinimalGltfFile.markdown)部分中给出。 本节将更详细地解释这些概念。
+`buffer`, `bufferView` 和 `accessor` 的示例已经 [最小glTF文件](http://iwun.github.io/2017/07/22/MinimalGltfFile/)部分中给出。 本节将更详细地解释这些概念。
 
 ## Buffers
 
-[`buffer`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-buffer) 表示原始二进制数据的块，没有固有的结构或含义， 可以通过 `uri` 来引用这个数据。 此URI可以指向外部文件，也可以指向直接在JSON文件中对二进制数据进行编码的 [data URI](2017-07-21-gltf-BasicGltfStructure.markdown#binary-data-in-buffers)。[最小glTF文件](2017-07-22-MinimalGltfFile.markdown) 包含一个 `buffer`示例，它包含42个字节的，编码在 [data URI](2017-07-21-gltf-BasicGltfStructure.markdown#binary-data-in-buffers)中的数据，
+[`buffer`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-buffer) 表示原始二进制数据的块，没有固有的结构或含义， 可以通过 `uri` 来引用这个数据。 此URI可以指向外部文件，也可以指向直接在JSON文件中对二进制数据进行编码的 [data URI](http://iwun.github.io/2017/07/21/gltf-BasicGltfStructure#binary-data-in-buffers)。[最小glTF文件](http://iwun.github.io/2017/07/22/MinimalGltfFile/) 包含一个 `buffer`示例，它包含42个字节的，编码在 [data URI](http://iwun.github.io/2017/07/21/gltf-BasicGltfStructure#binary-data-in-buffers)中的数据，
 
 ```javascript
 "buffers" : {
@@ -40,7 +40,7 @@ tags:
 
 ## BufferViews
 
-从 `buffer` 构造数据的第一步是使用 [`bufferView`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-bufferView)对象。 `bufferView` 表示一个缓冲区的数据的“切片”， 此切片使用偏移和长度（以字节为单位）定义。 [最小glTF文件](2017-07-22-MinimalGltfFile.markdown)中定义了两个 `bufferView` 对象：
+从 `buffer` 构造数据的第一步是使用 [`bufferView`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-bufferView)对象。 `bufferView` 表示一个缓冲区的数据的“切片”， 此切片使用偏移和长度（以字节为单位）定义。 [最小glTF文件](http://iwun.github.io/2017/07/22/MinimalGltfFile/)中定义了两个 `bufferView` 对象：
 
 ```javascript
 "bufferViews" : {
@@ -81,7 +81,7 @@ accessor的数据类型信息编码在 `type` 和 `componentType` 属性中。 `
 
 `componentType` 指定数据分量的类型。这是一个GL常量，比如 `5126` (`GL_FLOAT` ) 表示浮点数； `5123` (`GL_UNSIGNED_SHORT`)表示无符号短整型。
 
-这些属性的不同组合可用于描述任意数据类型。 例如， [最小 glTF 文件](2017-07-22-MinimalGltfFile.markdown)包含两个`accessor`：
+这些属性的不同组合可用于描述任意数据类型。 例如， [最小 glTF 文件](http://iwun.github.io/2017/07/22/MinimalGltfFile/)包含两个`accessor`：
 
 ```javascript
 "accessors" : {

@@ -94,7 +94,7 @@ A [`buffer`](https://github.com/KhronosGroup/glTF/tree/master/specification#refe
 }
 ```
 
-该二进制数据仅仅是从 `buffer` 的URI读取的存储器的原始块，没有固有含义或结构。  [Buffers, BufferViews and Accessors](./2017-07-22-BuffersBufferViewsAccessors.markdown)部分将介绍如何使用有关数据类型和数据布局的信息扩展原始数据。利用该信息，数据的一部分可能被解释为动画数据，另一部分可能被解释为几何数据。相比于在JSON格式中存储，以二进制形式存储数据可以更有效地在Web上传输，并且二进制数据可以直接传递到渲染器，而不必对其进行解码或预处理。
+该二进制数据仅仅是从 `buffer` 的URI读取的存储器的原始块，没有固有含义或结构。  [Buffers, BufferViews and Accessors](http://iwun.github.io/2017/07/22/BuffersBufferViewsAccessors/)部分将介绍如何使用有关数据类型和数据布局的信息扩展原始数据。利用该信息，数据的一部分可能被解释为动画数据，另一部分可能被解释为几何数据。相比于在JSON格式中存储，以二进制形式存储数据可以更有效地在Web上传输，并且二进制数据可以直接传递到渲染器，而不必对其进行解码或预处理。
 
 
 
