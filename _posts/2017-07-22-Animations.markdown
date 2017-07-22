@@ -15,7 +15,7 @@ tags:
 
 # Animations
 
-如[Simple animation](2017-07-22-SimpleAnimation.markdown)所示， [`animation`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-animation)可用于描述节点的`translation`, `rotation` 或 `scale`属性如何随时间变化。
+如[Simple animation](http://iwun.github.io/2017/07/22/SimpleAnimation/)所示， [`animation`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-animation)可用于描述节点的`translation`, `rotation` 或 `scale`属性如何随时间变化。
 
 下面是`animation`的另一个例子。 这一次，动画包含两个通道。 一个通道用于动画的平移，另一个通道用于动画节点的旋转：
 

@@ -15,10 +15,10 @@ tags:
 
 # 一个简单的动画
 
-如前面章节 [Scenes and Nodes](2017-07-22-ScenesNodes.markdown)所述，每个节点可以有一个局部变换。这个变换可以由节点的 `matrix` 属性给出，或者是 `translation`，`rotation`和`scale`(TRS)属性。
+如前面章节 [Scenes and Nodes](http://iwun.github.io/2017/07/22/ScenesNodes/)所述，每个节点可以有一个局部变换。这个变换可以由节点的 `matrix` 属性给出，或者是 `translation`，`rotation`和`scale`(TRS)属性。
 
 当变换由TRS属性给出时, 可以用[`animation`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-animation)描述，节点的 `translation`, `rotation` 或 `scale`属性如何随时间改变
-以下是先前展示的 [最小glTF文件](2017-07-22-MinimalGltfFile.markdown)，但是扩展了动画。本节将说明添加此动画所做的更改和扩展。
+以下是先前展示的 [最小glTF文件](http://iwun.github.io/2017/07/22/MinimalGltfFile/)，但是扩展了动画。本节将说明添加此动画所做的更改和扩展。
 
 
 ```javascript
@@ -167,7 +167,7 @@ glTF JSON的顶级字典中添加了三个元素，用于对动画数据进行�
 
 ### 用于原始动画数据的“`buffer` 和 `bufferView` 
 
-glTF中添加了一个新的ID为`"buffer1"`的`buffer`，。 此缓冲区同样使用[data URI](2017-07-21-gltf-BasicGltfStructure.markdown#binary-data-in-data-uris)来编码100个字节的动画数据：
+glTF中添加了一个新的ID为`"buffer1"`的`buffer`，。 此缓冲区同样使用[data URI](http://iwun.github.io/2017/07/21/gltf-BasicGltfStructure#binary-data-in-data-uris)来编码100个字节的动画数据：
 
 ```javascript
 "buffers" : {
@@ -272,7 +272,7 @@ glTF中添加了一个新的ID为`"buffer1"`的`buffer`，。 此缓冲区同样
 
 在动画期间，动画值是从`rotationAccessor`获取的。它根据当前模拟时间和`rotationAccessor`提供的关键帧时间进行线性插值。然后将内插的值写入到ID为`"node0"`的节点的`"rotation"`属性中。
 
-关于内插计算的更详细的描述和实际示例，可以参考[Animations](2017-07-22-Animations.markdown)部分。
+关于内插计算的更详细的描述和实际示例，可以参考[Animations](http://iwun.github.io/2017/07/22/Animations/)部分。
 
 #### 著作权声明
   
